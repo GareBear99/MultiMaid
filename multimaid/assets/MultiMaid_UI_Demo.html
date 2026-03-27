@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MultiMaid — UI Demo</title>
+<style>
+:root{
+  --bg:#0c1118;--bg2:#18212f;--panel:#131b25;--line:#2f4257;
+  --gold:#ffe6aa;--amber:#ffc07a;--cyan:#86ddff;--warm:#ffb078;--text:#eef4ff;--muted:#a7b6ca;
+}
+*{box-sizing:border-box} html,body{height:100%} body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.wrap{max-width:1400px;margin:0 auto;padding:18px}
+.card{background:rgba(19,27,37,.94);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.header{padding:18px 22px;margin-bottom:12px}.header h1{margin:0;color:var(--gold);font-size:34px}.header p{margin:8px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.band{padding:16px}.band h2{margin:0 0 10px;font-size:18px}
+.meter{height:160px;border-radius:16px;background:rgba(255,255,255,.04);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.fill{position:absolute;left:12px;right:12px;bottom:0;border-radius:10px}.gr{position:absolute;left:0;right:0;height:2px;background:#ff7272}
+.row{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-top:10px}
+.knobs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}.knob{padding:10px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+.bottom{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-top:12px}.panel{padding:16px}.line{height:170px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);position:relative}
+.v1,.v2{position:absolute;top:10px;bottom:10px;width:2px}.v1{left:18%;background:var(--amber)}.v2{left:58%;background:var(--cyan)}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+.status{padding:10px 14px;border-radius:14px;background:rgba(255,230,170,.08);border:1px solid rgba(255,230,170,.18);color:var(--gold);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card header">
+    <h1>MultiMaid</h1>
+    <p>Control your mix where it matters most. This demo intentionally presents MultiMaid as a band-dynamics tool only, not an EQ, glue compressor, or auto-mix assistant.</p>
+  </div>
+  <div class="status">Role lock: FreeEQ8 shapes • MultiMaid controls • GlueMaid glues</div>
+  <div class="grid" style="margin-top:12px">
+    <div class="card band">
+      <h2 style="color:var(--warm)">LOW</h2>
+      <div class="meter"><div class="fill" style="height:72%;background:linear-gradient(180deg,#ffca95,#ff8f5e)"></div><div class="gr" style="top:56%"></div></div>
+      <div class="row"><span>Energy</span><span>-10.4 dB</span></div><div class="row"><span>GR</span><span>-4.2 dB</span></div>
+      <div class="knobs"><div class="knob">Threshold<br>-22 dB</div><div class="knob">Ratio<br>2.5:1</div><div class="knob">Attack<br>18 ms</div><div class="knob">Release<br>120 ms</div></div>
+    </div>
+    <div class="card band">
+      <h2 style="color:var(--amber)">MID</h2>
+      <div class="meter"><div class="fill" style="height:58%;background:linear-gradient(180deg,#ffe5ad,#ffc26a)"></div><div class="gr" style="top:64%"></div></div>
+      <div class="row"><span>Energy</span><span>-16.2 dB</span></div><div class="row"><span>GR</span><span>-2.7 dB</span></div>
+      <div class="knobs"><div class="knob">Threshold<br>-18 dB</div><div class="knob">Ratio<br>2.0:1</div><div class="knob">Attack<br>12 ms</div><div class="knob">Release<br>140 ms</div></div>
+    </div>
+    <div class="card band">
+      <h2 style="color:var(--cyan)">HIGH</h2>
+      <div class="meter"><div class="fill" style="height:46%;background:linear-gradient(180deg,#b7f0ff,#72d7ff)"></div><div class="gr" style="top:72%"></div></div>
+      <div class="row"><span>Energy</span><span>-21.7 dB</span></div><div class="row"><span>GR</span><span>-1.9 dB</span></div>
+      <div class="knobs"><div class="knob">Threshold<br>-16 dB</div><div class="knob">Ratio<br>1.8:1</div><div class="knob">Attack<br>8 ms</div><div class="knob">Release<br>100 ms</div></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="card panel">
+      <h2 style="margin:0;color:var(--gold)">Crossover View</h2>
+      <div class="line" style="margin-top:10px"><div class="v1"></div><div class="v2"></div></div>
+      <div class="row"><span>Low/Mid</span><span>120 Hz</span></div><div class="row"><span>Mid/High</span><span>2500 Hz</span></div>
+      <div class="note">Zones, not nodes. This is what keeps MultiMaid out of FreeEQ8's lane.</div>
+    </div>
+    <div class="card panel">
+      <h2 style="margin:0;color:var(--gold)">Global Status</h2>
+      <div class="row" style="margin-top:14px"><span>Input</span><span>-11.2 dB</span></div>
+      <div class="row"><span>Output</span><span>-13.0 dB</span></div>
+      <div class="row"><span>Mix</span><span>100%</span></div>
+      <div class="note">MultiMaid is for controlling regional dynamics. It does not do match EQ, streaming judgment, reverb, or sidechain-ducking identity.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

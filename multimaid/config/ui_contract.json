@@ -1,0 +1,28 @@
+{
+  "product": "MultiMaid",
+  "tagline": "Control your mix where it matters most.",
+  "mode": "3-band",
+  "layout": {
+    "topBar": ["title", "input", "output", "mix"],
+    "centerBands": ["lowBand", "midBand", "highBand"],
+    "bottom": ["crossoverView", "globalMeters", "statusStrip"]
+  },
+  "bandControls": [
+    "threshold",
+    "ratio",
+    "attack",
+    "release",
+    "knee",
+    "trim",
+    "solo",
+    "mute",
+    "bypass"
+  ],
+  "forbidden": [
+    "parametric_eq_nodes",
+    "match_eq",
+    "auto_fix_engine",
+    "reverb_delay_width",
+    "mastering_judgment"
+  ]
+}
