@@ -8,8 +8,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Example:
 #   cmake -B build -DJUCE_DIR=/path/to/JUCE
 
+if(NOT DEFINED JUCE_DIR AND DEFINED JUCE_PATH)
+    set(JUCE_DIR "${JUCE_PATH}")
+endif()
 if(NOT DEFINED JUCE_DIR)
-    message(FATAL_ERROR "JUCE_DIR not set. Point it at your JUCE directory.")
+    message(FATAL_ERROR "JUCE_DIR (or JUCE_PATH) not set. Point it at your JUCE directory.")
 endif()
 
 add_subdirectory(${JUCE_DIR} JUCE)
@@ -48,3 +51,5 @@ target_link_libraries(MultiMaid PRIVATE
     juce::juce_audio_utils
     juce::juce_dsp
     juce::juce_gui_extra)
+
+target_compile_definitions(MultiMaid PRIVATE JUCE_VST3_CAN_REPLACE_VST2=0)
